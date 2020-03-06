@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
 
             $table->string('name')->nullable();
             $table->string('dob')->default("01-01-1990");
-            $table->enum('gender', ['None', 'Male', 'Female'])->default('None');
+            $table->enum('gender', ['Male', 'Female'])->default('Male');
             $table->string('avatar')->nullable();
 
             $table->text('school')->nullable();
