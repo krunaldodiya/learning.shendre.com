@@ -20,7 +20,10 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        $update = User::find($user->id)->update($request->all());
+        $data = $request->all();
+        $data['status'] = true;
+
+        $update = User::find($user->id)->update($data);
 
         if ($update) {
             return response(['user' => $this->userRepository->getUserById($user->id)], 200);
