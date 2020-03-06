@@ -2,11 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfile;
+use App\Repositories\UserRepositoryInterface;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    public function updateProfile(UpdateProfile $request)
+    {
+        $user = auth()->user();
+
+        $update = User::find($user->id)->update($request->all());
+
+        if ($update) {
+            return response(['user' => $this->userRepository->getUserById($user->id)], 200);
+        }
+
+        return response(['errors' => "error"], 400);
+    }
+
     public function uploadAvatar(Request $request)
     {
         $user = auth()->user();
