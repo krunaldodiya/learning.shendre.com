@@ -17,6 +17,6 @@ class UserController extends Controller
 
         User::where('id', $user->id)->update(['avatar' => $filename]);
 
-        return response(['filename' => url($filename)], 200);
+        return response(['filename' => url("storage/{$filename}")], 200);
     }
 }
