@@ -25,7 +25,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function getAvatarAttribute($avatar)
     {
-        return $avatar == null ? url("images/avatar.png") : url($avatar);
+        return $avatar == null ? url("images/avatar.png") : url("storage/$avatar");
     }
 
     /**
