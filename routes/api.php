@@ -22,3 +22,4 @@ Route::middleware('guest:api')->post('/otp/request', 'OtpController@requestOtp')
 Route::middleware('guest:api')->post('/otp/verify', 'OtpController@verifyOtp');
 Route::middleware('auth:api')->post('/upload/avatar', 'UserController@uploadAvatar');
 Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
+Route::middleware('auth:api')->post('/categories/all', 'CategoryController@getCategories');
