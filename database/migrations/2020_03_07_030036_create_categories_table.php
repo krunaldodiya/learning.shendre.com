@@ -17,6 +17,11 @@ class CreateCategoriesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('image')->nullable();
             $table->string('name');
+
+            $table->integer("price");
+            $table->integer("trial_days");
+            $table->timestamp("expires_at");
+
             $table->integer('order')->default(1);
             $table->timestamps();
         });

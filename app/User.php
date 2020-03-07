@@ -28,14 +28,9 @@ class User extends Authenticatable implements JWTSubject
         return $avatar == null ? url("images/avatar.png") : url("storage/{$avatar}");
     }
 
-    public function subscriptions()
+    public function institute()
     {
-        return $this->belongsToMany(Plan::class, 'subscriptions');
-    }
-
-    public function institutes()
-    {
-        return $this->belongsToMany(Institute::class, 'institute_users');
+        return $this->belongsTo(Institute::class);
     }
 
     /**

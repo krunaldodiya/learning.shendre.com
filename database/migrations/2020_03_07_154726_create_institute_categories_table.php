@@ -14,10 +14,10 @@ class CreateInstitutePlansTable extends Migration
     public function up()
     {
         Schema::create('institute_plans', function (Blueprint $table) {
-            $table->primary(['plan_id', 'institute_id']);
+            $table->primary(['category_id', 'institute_id']);
 
-            $table->uuid('plan_id');
-            $table->foreign('plan_id')->references('id')->on('plans')->onUpdate('cascade')->onDelete('cascade');
+            $table->uuid('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 
             $table->uuid('institute_id');
             $table->foreign('institute_id')->references('id')->on('institutes')->onUpdate('cascade')->onDelete('cascade');
