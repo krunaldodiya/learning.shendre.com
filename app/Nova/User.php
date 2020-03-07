@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -45,6 +46,8 @@ class User extends Resource
             ID::make()->sortable(),
 
             Gravatar::make(),
+
+            BelongsToMany::make('Plan', 'subscriptions'),
 
             Text::make('Name')
                 ->sortable()

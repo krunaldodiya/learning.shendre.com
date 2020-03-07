@@ -17,6 +17,11 @@ class Institute extends Model
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class, 'institute_users');
+    }
+
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class, 'institute_plans');
     }
 }
