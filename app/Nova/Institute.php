@@ -52,9 +52,9 @@ class Institute extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsToMany::make('User'),
+            BelongsToMany::make('Users'),
 
-            BelongsToMany::make('Plan'),
+            BelongsToMany::make('Plans'),
 
             Text::make('Name')
                 ->sortable()
