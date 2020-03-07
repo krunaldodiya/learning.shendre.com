@@ -12,7 +12,7 @@ class Subscription extends Model
     protected $guarded = [];
 
     protected $dates = [
-        'created_at', 'updated_at',
+        'created_at', 'updated_at', 'expires_at'
     ];
 
     public function user()
