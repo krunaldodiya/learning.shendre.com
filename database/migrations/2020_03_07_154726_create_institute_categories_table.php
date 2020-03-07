@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstitutePlansTable extends Migration
+class CreateInstituteCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInstitutePlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('institute_plans', function (Blueprint $table) {
+        Schema::create('institute_categories', function (Blueprint $table) {
             $table->primary(['category_id', 'institute_id']);
 
             $table->uuid('category_id');
@@ -31,6 +31,6 @@ class CreateInstitutePlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institute_plans');
+        Schema::dropIfExists('institute_categories');
     }
 }
