@@ -16,9 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->uuid('institute_id')->nullable();
-            $table->foreign('institute_id')->references('id')->on('institutes')->onUpdate('cascade')->onDelete('cascade');
-
             $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
 
