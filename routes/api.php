@@ -20,6 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('guest:api')->post('/otp/request', 'OtpController@requestOtp');
 Route::middleware('guest:api')->post('/otp/verify', 'OtpController@verifyOtp');
+
 Route::middleware('auth:api')->post('/upload/avatar', 'UserController@uploadAvatar');
-Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
+
 Route::middleware('auth:api')->post('/categories/all', 'CategoryController@getCategories');
+
+Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
+Route::middleware('auth:api')->post('/users/me', 'UserController@me');

@@ -11,7 +11,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getUserById($user_id)
     {
-        return User::where(['id' => $user_id])->first();
+        return User::with('subscriptions')->where(['id' => $user_id])->first();
     }
 
     public function register($request)

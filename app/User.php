@@ -28,6 +28,11 @@ class User extends Authenticatable implements JWTSubject
         return $avatar == null ? url("images/avatar.png") : url("storage/{$avatar}");
     }
 
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

@@ -44,4 +44,11 @@ class UserController extends Controller
 
         return response(['filename' => url("storage/{$filename}")], 200);
     }
+
+    public function me(Request $request)
+    {
+        $user = auth()->user();
+
+        return response(['user' => $this->userRepository->getUserById($user->id)], 200);
+    }
 }
