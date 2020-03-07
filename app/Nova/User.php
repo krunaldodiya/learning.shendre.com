@@ -53,9 +53,9 @@ class User extends Resource
 
             Gravatar::make(),
 
-            BelongsToMany::make('Plan', 'subscriptions'),
+            BelongsToMany::make('Plans'),
 
-            BelongsToMany::make('Institute', 'institute_users'),
+            BelongsToMany::make('Institutes'),
 
             Text::make('Name')
                 ->sortable()
