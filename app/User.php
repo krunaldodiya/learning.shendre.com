@@ -33,9 +33,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(Plan::class, 'subscriptions');
     }
 
-    public function institute()
+    public function institutes()
     {
-        return $this->belongsTo(Institute::class, 'institute_id', 'institute_users');
+        return $this->belongsToMany(Institute::class, 'institute_users');
     }
 
     /**

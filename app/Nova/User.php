@@ -55,7 +55,7 @@ class User extends Resource
 
             BelongsToMany::make('Plan', 'subscriptions'),
 
-            BelongsTo::make('Institute', 'institute'),
+            BelongsToMany::make('Institute', 'institute_users'),
 
             Text::make('Name')
                 ->sortable()
