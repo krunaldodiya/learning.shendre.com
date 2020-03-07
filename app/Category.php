@@ -19,9 +19,4 @@ class Category extends Model
     {
         return $this->hasMany(Chapter::class)->orderBy('order');
     }
-
-    public function plan()
-    {
-        return $this->hasOne(Plan::class);
-    }
 }

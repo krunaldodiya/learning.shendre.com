@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -48,6 +49,8 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            HasMany::make('Chapters'),
 
             Text::make('Name')->rules('required', 'unique:categories'),
 

@@ -4,33 +4,25 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Chapter extends Resource
+class Subscription extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Chapter';
+    public static $model = 'App\Subscription';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
-
-    public function title()
-    {
-        return $this->name;
-    }
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -38,7 +30,7 @@ class Chapter extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name'
+        'id',
     ];
 
     /**
@@ -52,17 +44,11 @@ class Chapter extends Resource
         return [
             ID::make()->sortable(),
 
+            BelongsTo::make('User'),
+
             BelongsTo::make('Category'),
 
-            HasMany::make('Topics'),
-
-            Text::make('Name')->rules('required', 'unique:chapters'),
-
-            Textarea::make('Description'),
-
-            Image::make('Image')->disk('public'),
-
-            Text::make('Order')->rules('required', 'unique:chapters'),
+            Text::make('Expires At'),
         ];
     }
 
