@@ -23,7 +23,12 @@ class Plan extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
+
+    public function title()
+    {
+        return $this->name;
+    }
 
     /**
      * The columns that should be searched.

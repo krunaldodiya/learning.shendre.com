@@ -26,6 +26,11 @@ class User extends Resource
      */
     public static $title = 'name';
 
+    public function title()
+    {
+        return $this->name;
+    }
+
     /**
      * The columns that should be searched.
      *
@@ -50,7 +55,7 @@ class User extends Resource
 
             BelongsToMany::make('Plan', 'subscriptions'),
 
-            BelongsTo::make('Institute'),
+            BelongsTo::make('Institute', 'institute_users'),
 
             Text::make('Name')
                 ->sortable()
