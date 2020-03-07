@@ -51,7 +51,7 @@ class Chapter extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Category')->searchable(),
+            BelongsTo::make('Category'),
 
             Text::make('Name')->rules('required', 'unique:chapters'),
 

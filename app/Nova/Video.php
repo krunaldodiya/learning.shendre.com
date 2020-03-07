@@ -46,11 +46,11 @@ class Video extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Category')->searchable(),
+            BelongsTo::make('Category'),
 
-            BelongsTo::make('Chapter')->searchable(),
+            BelongsTo::make('Chapter'),
 
-            BelongsTo::make('Topic')->searchable(),
+            BelongsTo::make('Topic'),
 
             Image::make('Thumbnail'),
 

@@ -51,9 +51,9 @@ class Topic extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Category')->searchable(),
+            BelongsTo::make('Category'),
 
-            BelongsTo::make('Chapter')->searchable(),
+            BelongsTo::make('Chapter'),
 
             Text::make('Name')->rules('required', 'unique:topics'),
 
