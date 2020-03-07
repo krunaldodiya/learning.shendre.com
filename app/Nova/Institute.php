@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -50,6 +51,10 @@ class Institute extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            BelongsToMany::make('User'),
+
+            BelongsToMany::make('Plan'),
 
             Text::make('Name')
                 ->sortable()
