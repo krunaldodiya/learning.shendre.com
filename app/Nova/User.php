@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
@@ -55,7 +56,7 @@ class User extends Resource
 
             BelongsToMany::make('Plan', 'subscriptions'),
 
-            BelongsTo::make('Institute', 'institute_users'),
+            HasOne::make('Institute', 'institute_users'),
 
             Text::make('Name')
                 ->sortable()
