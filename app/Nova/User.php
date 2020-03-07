@@ -53,7 +53,7 @@ class User extends Resource
 
             Gravatar::make(),
 
-            BelongsToMany::make('Subscriptions', 'subscriptions'),
+            BelongsToMany::make('Plan', 'subscriptions'),
 
             BelongsTo::make('Institute', 'institute_users'),
 
