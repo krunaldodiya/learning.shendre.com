@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\UserWasCreated;
 use App\Traits\HasUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,6 +22,10 @@ class User extends Authenticatable implements JWTSubject
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => UserWasCreated::class
     ];
 
     public function getAvatarAttribute($avatar)
