@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -48,7 +49,7 @@ class Subscription extends Resource
 
             BelongsTo::make('Category'),
 
-            Text::make('Expires At'),
+            Date::make('Expires At')->rules('required'),
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\ID;
@@ -53,6 +54,12 @@ class Category extends Resource
             HasMany::make('Chapters'),
 
             Text::make('Name')->rules('required', 'unique:categories'),
+
+            Text::make('Price')->rules('required'),
+
+            Text::make('Trial Days')->rules('required'),
+
+            Date::make('Expires At')->rules('required'),
 
             Image::make('Image')->disk('public'),
 
