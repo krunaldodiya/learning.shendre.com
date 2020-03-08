@@ -60,6 +60,6 @@ class UserController extends Controller
             return response()->file("/storage/{$user->avatar}");
         }
 
-        return response()->file("/images/default.png");
+        return response()->file("/storage/avatar.png");
     }
 }
