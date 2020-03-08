@@ -54,7 +54,7 @@ class UserController extends Controller
 
     public function getAvatar(Request $request)
     {
-        $avatar = User::find($request->avatar);
+        $avatar = $request->avatar;
 
         if ($avatar) {
             return response()->file("storage/{$avatar}");
