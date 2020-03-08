@@ -60,7 +60,7 @@ class Plan extends Resource
 
             Text::make('Description')->sortable()->rules('required'),
 
-            Image::make('Image')->sortable()->rules('required'),
+            Image::make('Image')->sortable(),
 
             Text::make('Price')->sortable()->rules('required'),
 
