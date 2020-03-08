@@ -27,8 +27,9 @@ class SubscriptionController extends Controller
 
         Subscription::create([
             'payment_id' => $payment_id,
-            'plan_id' => $plan->id,
             'user_id' => $user->id,
+            'plan_id' => $plan->id,
+            'institute_id' => $user->institute_id,
             'expires_at' => $plan->expires_at
         ]);
 
