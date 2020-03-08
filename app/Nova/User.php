@@ -102,7 +102,7 @@ class User extends Resource
                 'Approved' => 'Approved',
                 'Pending' => 'Pending',
                 'Rejected' => 'Rejected',
-            ]),
+            ])->onlyOnDetail(),
 
             Boolean::make('Profile Updated', 'status')->sortable(),
         ];
