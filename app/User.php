@@ -32,7 +32,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function getSettingsAttribute()
     {
-        return  Setting::all();
+        return  Setting::first();
     }
 
     public function subscriptions()
