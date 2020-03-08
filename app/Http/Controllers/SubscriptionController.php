@@ -18,7 +18,7 @@ class SubscriptionController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    protected function updateSubscription(Request $request)
+    protected function update(Request $request)
     {
         $user = auth('api')->user();
 
