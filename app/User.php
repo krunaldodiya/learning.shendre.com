@@ -28,6 +28,14 @@ class User extends Authenticatable implements JWTSubject
         'created' => UserWasCreated::class
     ];
 
+    protected $appends = ['settings'];
+
+
+    public function getSettingsAttribute()
+    {
+        return 'test';
+    }
+
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
