@@ -30,10 +30,9 @@ class User extends Authenticatable implements JWTSubject
 
     protected $appends = ['settings'];
 
-
     public function getSettingsAttribute()
     {
-        return 'test';
+        return  Setting::all();
     }
 
     public function subscriptions()

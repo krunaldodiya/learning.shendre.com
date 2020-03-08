@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/media/{media}', 'HomeController@getMediaFile');
 
 Route::get('/test', function () {
-    $user = User::with('institute', 'subscriptions')->first();
+    $user = User::first();
 
     dd($user->toArray());
 });

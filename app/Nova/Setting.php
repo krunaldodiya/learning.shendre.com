@@ -3,8 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
+use R64\NovaFields\Number;
+use R64\NovaFields\Row;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Setting extends Resource
@@ -43,13 +43,10 @@ class Setting extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->onlyOnDetail(),
-
-            Text::make('description'),
-
-            Text::make('key'),
-
-            Text::make('value'),
+            Row::make('Meta', [
+                Number::make('Key'),
+                Number::make('Value'),
+            ], 'meta'),
         ];
     }
 
