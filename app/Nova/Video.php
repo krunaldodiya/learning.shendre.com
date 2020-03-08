@@ -59,15 +59,17 @@ class Video extends Resource
 
             Image::make('Thumbnail'),
 
-            Text::make('Title')->rules('required', 'unique:videos'),
+            Text::make('Title')
+                ->creationRules('required', 'unique:videos,title')
+                ->updateRules('required', 'unique:videos,title,{{resourceId}}'),
 
             Textarea::make('Description'),
 
             Text::make('Url'),
 
             Text::make('Order')
-                ->creationRules('required')
-                ->updateRules('nullable'),
+                ->creationRules('required', 'unique:videos,order')
+                ->updateRules('required', 'unique:videos,order,{{resourceId}}'),
         ];
     }
 

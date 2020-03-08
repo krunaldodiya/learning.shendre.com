@@ -56,15 +56,17 @@ class Chapter extends Resource
 
             HasMany::make('Topics'),
 
-            Text::make('Name')->rules('required', 'unique:chapters'),
+            Text::make('Name')
+                ->creationRules('required', 'unique:chapters,name')
+                ->updateRules('required', 'unique:chapters,name,{{resourceId}}'),
 
             Textarea::make('Description'),
 
             Image::make('Image')->disk('public'),
 
             Text::make('Order')
-                ->creationRules('required')
-                ->updateRules('nullable'),
+                ->creationRules('required', 'unique:chapters,order')
+                ->updateRules('required', 'unique:chapters,order,{{resourceId}}'),
         ];
     }
 

@@ -58,15 +58,17 @@ class Topic extends Resource
 
             HasMany::make('Videos'),
 
-            Text::make('Name')->rules('required', 'unique:topics'),
+            Text::make('Name')
+                ->creationRules('required', 'unique:topics,name')
+                ->updateRules('required', 'unique:topics,name,{{resourceId}}'),
 
             Textarea::make('Description'),
 
             Image::make('Image')->disk('public'),
 
             Text::make('Order')
-                ->creationRules('required')
-                ->updateRules('nullable'),
+                ->creationRules('required', 'unique:topics,order')
+                ->updateRules('required', 'unique:topics,order,{{resourceId}}'),
         ];
     }
 

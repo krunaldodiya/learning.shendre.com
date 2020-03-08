@@ -52,13 +52,15 @@ class Category extends Resource
 
             HasMany::make('Chapters'),
 
-            Text::make('Name')->rules('required', 'unique:categories'),
+            Text::make('Name')
+                ->creationRules('required', 'unique:categories,name')
+                ->updateRules('required', 'unique:categories,name,{{resourceId}}'),
 
             Image::make('Image')->disk('public'),
 
             Text::make('Order')
-                ->creationRules('required')
-                ->updateRules('nullable'),
+                ->creationRules('required', 'unique:categories,order')
+                ->updateRules('required', 'unique:categories,order,{{resourceId}}'),
         ];
     }
 
