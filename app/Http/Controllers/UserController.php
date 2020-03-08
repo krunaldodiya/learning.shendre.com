@@ -42,14 +42,7 @@ class UserController extends Controller
 
         User::where('id', $user->id)->update(['avatar' => $filename]);
 
-        return response(['filename' => url("storage/{$filename}")], 200);
-    }
-
-    public function me(Request $request)
-    {
-        $user = auth()->user();
-
-        return response(['user' => $this->userRepository->getUserById($user->id)], 200);
+        return response(['filename' => $filename], 200);
     }
 
     public function getAvatar(Request $request)
@@ -61,5 +54,12 @@ class UserController extends Controller
         }
 
         return response()->file("storage/avatar.png");
+    }
+
+    public function me(Request $request)
+    {
+        $user = auth()->user();
+
+        return response(['user' => $this->userRepository->getUserById($user->id)], 200);
     }
 }
