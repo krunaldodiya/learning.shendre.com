@@ -59,7 +59,8 @@ class Category extends Resource
                 ->creationRules('required', 'unique:categories,name')
                 ->updateRules('required', 'unique:categories,name,{{resourceId}}'),
 
-            Image::make('Image')->disk('public'),
+            // Image::make('Image')->disk('public'),
+            Text::make('Image'),
 
             Text::make('Order')
                 ->creationRules('required', 'unique:categories,order')

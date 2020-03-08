@@ -66,7 +66,8 @@ class Topic extends Resource
 
             Textarea::make('Description'),
 
-            Image::make('Image')->disk('public'),
+            // Image::make('Image')->disk('public'),
+            Text::make('Image'),
 
             Text::make('Order')
                 ->creationRules('required', 'unique:topics,order')

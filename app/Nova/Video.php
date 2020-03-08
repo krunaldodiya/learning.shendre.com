@@ -59,7 +59,8 @@ class Video extends Resource
 
             BelongsTo::make('Topic'),
 
-            Image::make('Thumbnail'),
+            // Image::make('Thumbnail')->disk('public'),
+            Text::make('Thumbnail'),
 
             Text::make('Title')
                 ->creationRules('required', 'unique:videos,title')
