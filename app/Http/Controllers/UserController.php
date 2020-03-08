@@ -45,17 +45,6 @@ class UserController extends Controller
         return response(['filename' => $filename], 200);
     }
 
-    public function getAvatar(Request $request)
-    {
-        $avatar = $request->avatar;
-
-        if ($avatar) {
-            return response()->file("storage/{$avatar}");
-        }
-
-        return response()->file("storage/avatar.png");
-    }
-
     public function me(Request $request)
     {
         $user = auth()->user();
