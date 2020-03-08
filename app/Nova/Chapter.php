@@ -41,6 +41,8 @@ class Chapter extends Resource
         'id', 'name'
     ];
 
+    public static $group = 'Meta';
+
     /**
      * Get the fields displayed by the resource.
      *
