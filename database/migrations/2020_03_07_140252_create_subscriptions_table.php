@@ -14,17 +14,13 @@ class CreateSubscriptionsTable extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->primary(['user_id', 'plan_id']);
 
             $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->uuid('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-
-            $table->timestamp("expires_at");
-
-            $table->timestamps();
+            $table->uuid('plan_id');
+            $table->foreign('plan_id')->references('id')->on('plans')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

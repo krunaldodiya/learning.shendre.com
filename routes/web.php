@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return "test";
+    $user = User::with('institute', 'subscriptions')->first();
+
+    dd($user->toArray());
 });

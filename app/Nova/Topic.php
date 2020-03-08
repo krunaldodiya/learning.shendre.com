@@ -64,7 +64,9 @@ class Topic extends Resource
 
             Image::make('Image')->disk('public'),
 
-            Text::make('Order')->rules('required', 'unique:topics'),
+            Text::make('Order')
+                ->creationRules('required')
+                ->updateRules('nullable'),
         ];
     }
 

@@ -4,8 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
@@ -53,9 +53,9 @@ class User extends Resource
 
             Gravatar::make(),
 
-            BelongsTo::make('Institute'),
+            BelongsToMany::make('Subscriptions', 'subscriptions', Plan::class),
 
-            HasMany::make('Subscriptions'),
+            BelongsTo::make('Institute'),
 
             Text::make('Name')
                 ->sortable()

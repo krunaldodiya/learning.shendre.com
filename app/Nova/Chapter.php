@@ -62,7 +62,9 @@ class Chapter extends Resource
 
             Image::make('Image')->disk('public'),
 
-            Text::make('Order')->rules('required', 'unique:chapters'),
+            Text::make('Order')
+                ->creationRules('required')
+                ->updateRules('nullable'),
         ];
     }
 

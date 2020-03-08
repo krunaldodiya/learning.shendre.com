@@ -65,7 +65,9 @@ class Video extends Resource
 
             Text::make('Url'),
 
-            Text::make('Order')->rules('required', 'unique:videos'),
+            Text::make('Order')
+                ->creationRules('required')
+                ->updateRules('nullable'),
         ];
     }
 
