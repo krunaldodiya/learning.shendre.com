@@ -63,6 +63,8 @@ class User extends Resource
 
             BelongsTo::make('Institute'),
 
+            Text::make('Unique Id')->sortable(),
+
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
