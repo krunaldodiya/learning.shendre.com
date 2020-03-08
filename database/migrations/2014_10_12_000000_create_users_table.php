@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
             $table->text('school')->nullable();
             $table->string('class')->nullable();
 
-            $table->string('imei')->nullable();
+            $table->string('unique_id')->nullable();
 
             $table->enum('account_status', ["Approved", "Rejected", "Pending"])->default("Approved");
             $table->boolean('status')->default(false);

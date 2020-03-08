@@ -17,7 +17,7 @@ class VerifyOtp extends FormRequest
         return [
             'mobile' => 'required|numeric|digits:10',
             'otp' => 'required|numeric|digits:4',
-            'imei' => 'required'
+            'unique_id' => 'required'
         ];
     }
 

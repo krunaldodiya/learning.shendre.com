@@ -28,8 +28,8 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = $this->getUserById($user->id);
 
-        if ($user->imei == null) {
-            $user->update(['imei' => $request->imei]);
+        if ($user->unique_id == null) {
+            $user->update(['unique_id' => $request->unique_id]);
         }
 
         $token = JWTAuth::fromUser($user);
