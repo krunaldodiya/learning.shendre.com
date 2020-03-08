@@ -57,9 +57,9 @@ class UserController extends Controller
         $user = User::find($request->user_id);
 
         if ($user && $user->avatar) {
-            return url($user->avatar);
+            return response()->file("/storage/{$user->avatar}");
         }
 
-        return url("default.png");
+        return response()->file("/images/default.png");
     }
 }
