@@ -12,8 +12,4 @@ class Setting extends Model
     public $timestamps = false;
 
     protected $guarded = [];
-
-    protected $casts = [
-        'meta' => 'json',
-    ];
 }

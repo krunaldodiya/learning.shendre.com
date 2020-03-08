@@ -4,8 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use R64\NovaFields\Text;
-use R64\NovaFields\Row;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Setting extends Resource
@@ -44,12 +43,13 @@ class Setting extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()->onlyOnDetail(),
 
-            Row::make('Meta', [
-                Text::make('Key'),
-                Text::make('Value'),
-            ], 'meta'),
+            Text::make('description'),
+
+            Text::make('key'),
+
+            Text::make('value'),
         ];
     }
 
