@@ -52,7 +52,9 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()->sortable()->onlyOnDetail(),
+
+            Text::make('Unique Id')->onlyOnDetail(),
 
             Avatar::make('Avatar'),
 
