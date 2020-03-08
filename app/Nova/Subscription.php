@@ -3,22 +3,17 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Plan extends Resource
+class Subscription extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Plan';
+    public static $model = 'App\Subscription';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -26,11 +21,6 @@ class Plan extends Resource
      * @var string
      */
     public static $title = 'id';
-
-    public function title()
-    {
-        return $this->category->name;
-    }
 
     /**
      * The columns that should be searched.
@@ -51,22 +41,6 @@ class Plan extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            BelongsTo::make('Category')->sortable(),
-
-            BelongsToMany::make('Institutes'),
-
-            Text::make('Name')->sortable()->rules('required'),
-
-            Text::make('Description')->sortable()->rules('required'),
-
-            Image::make('Image')->sortable()->rules('required'),
-
-            Text::make('Price')->sortable()->rules('required'),
-
-            Text::make('Trial Days')->sortable()->rules('required'),
-
-            Date::make('Expires At')->sortable()->rules('required'),
         ];
     }
 

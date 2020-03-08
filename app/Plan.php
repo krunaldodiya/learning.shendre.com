@@ -20,11 +20,6 @@ class Plan extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'subscriptions');
-    }
-
     public function institutes()
     {
         return $this->belongsToMany(Institute::class, 'institute_plans');

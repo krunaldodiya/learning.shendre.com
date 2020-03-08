@@ -58,7 +58,7 @@ class User extends Resource
 
             Avatar::make('Avatar'),
 
-            BelongsToMany::make('Subscriptions', 'subscriptions', Plan::class),
+            BelongsToMany::make('Subscriptions'),
 
             BelongsTo::make('Institute'),
 
