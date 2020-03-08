@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
@@ -48,6 +49,8 @@ class Subscription extends Resource
             BelongsTo::make('User'),
 
             BelongsTo::make('Plan'),
+
+            BelongsTo::make('Institute'),
 
             Text::make('Payment Id')->rules('required', 'max:255'),
 
