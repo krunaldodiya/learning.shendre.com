@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Date;
@@ -56,6 +57,12 @@ class Plan extends Resource
             BelongsToMany::make('Users'),
 
             BelongsToMany::make('Institutes'),
+
+            Text::make('Name')->sortable()->rules('required'),
+
+            Text::make('Description')->sortable()->rules('required'),
+
+            Image::make('Image')->sortable()->rules('required'),
 
             Text::make('Price')->sortable()->rules('required'),
 

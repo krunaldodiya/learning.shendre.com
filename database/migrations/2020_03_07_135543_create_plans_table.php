@@ -19,6 +19,10 @@ class CreatePlansTable extends Migration
             $table->uuid('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 
+            $table->string("name");
+            $table->text("description");
+            $table->string("image");
+
             $table->integer("price");
             $table->integer("trial_days");
             $table->timestamp("expires_at");
