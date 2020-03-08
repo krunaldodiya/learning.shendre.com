@@ -5,13 +5,14 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use OwenMelbz\RadioField\RadioButton;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -58,7 +59,7 @@ class User extends Resource
 
             Avatar::make('Avatar'),
 
-            BelongsToMany::make('Subscriptions'),
+            HasMany::make('Subscriptions'),
 
             BelongsTo::make('Institute'),
 

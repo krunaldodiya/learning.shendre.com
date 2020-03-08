@@ -3,7 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Subscription extends Resource
@@ -40,7 +43,15 @@ class Subscription extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()->sortable()->onlyOnDetail(),
+
+            BelongsTo::make('User'),
+
+            BelongsTo::make('Plan'),
+
+            Text::make('Payment Id')->rules('required', 'max:255'),
+
+            Date::make('Expires At')->sortable()->rules('required'),
         ];
     }
 
