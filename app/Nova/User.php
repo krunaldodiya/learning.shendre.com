@@ -3,12 +3,15 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use OwenMelbz\RadioField\RadioButton;
 
 class User extends Resource
 {
@@ -51,13 +54,17 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
+            Avatar::make('Avatar'),
 
             BelongsToMany::make('Subscriptions', 'subscriptions', Plan::class),
 
             BelongsTo::make('Institute'),
 
             Text::make('Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Mobile')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
@@ -71,6 +78,31 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            Text::make('Dob')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            RadioButton::make('Gender')
+                ->sortable()
+                ->options(['Male' => 'Male', 'Female' => 'Female'])
+                ->default('Male'),
+
+            Text::make('School')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Class')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Select::make('Account Status')->sortable()->options([
+                'Approved' => 'Approved',
+                'Pending' => 'Pending',
+                'Rejected' => 'Rejected',
+            ]),
+
+            Boolean::make('Profile Updated', 'status')->sortable(),
         ];
     }
 

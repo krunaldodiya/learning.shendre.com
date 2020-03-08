@@ -51,4 +51,11 @@ class UserController extends Controller
 
         return response(['user' => $this->userRepository->getUserById($user->id)], 200);
     }
+
+    public function getAvatar(Request $request)
+    {
+        $user = User::find($request->user_id);
+
+        return url($user->avatar);
+    }
 }

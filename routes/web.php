@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/avatar/{user_id}', 'UserController@getAvatar');
+
 Route::get('/test', function () {
     $user = User::with('institute', 'subscriptions')->first();
 

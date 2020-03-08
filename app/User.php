@@ -28,11 +28,6 @@ class User extends Authenticatable implements JWTSubject
         'created' => UserWasCreated::class
     ];
 
-    public function getAvatarAttribute($avatar)
-    {
-        return $avatar == null ? url("images/avatar.png") : url("storage/{$avatar}");
-    }
-
     public function subscriptions()
     {
         return $this->belongsToMany(Plan::class, 'subscriptions');
