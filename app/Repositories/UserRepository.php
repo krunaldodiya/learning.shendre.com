@@ -18,7 +18,6 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::create([
             'mobile' => $request->mobile,
-            'imei' => json_encode($request->imei),
             'password' => bcrypt(Str::random(8))
         ]);
 
@@ -30,7 +29,10 @@ class UserRepository implements UserRepositoryInterface
         $user = $this->getUserById($user->id);
 
         if ($user->unique_id == null) {
-            $user->update(['unique_id' => $request->unique_id]);
+            $user->update([
+                'unique_id' => $request->unique_id,
+                'imei' => json_encode($request->imei),
+            ]);
         }
 
         $token = JWTAuth::fromUser($user);
