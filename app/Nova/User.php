@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -112,7 +113,7 @@ class User extends Resource
 
             Boolean::make('Profile Updated', 'status')->sortable(),
 
-            Date::make('Join At', 'created_at')->sortable(),
+            DateTime::make('Join At', 'created_at')->format('DD-MM-YYYY hh:mm A')->sortable(),
 
             Text::make('Imei')->onlyOnDetail()
         ];
