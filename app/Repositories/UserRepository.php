@@ -18,6 +18,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::create([
             'mobile' => $request->mobile,
+            'imei' => json_encode($request->imei),
             'password' => bcrypt(Str::random(8))
         ]);
 
