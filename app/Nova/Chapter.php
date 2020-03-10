@@ -59,6 +59,7 @@ class Chapter extends Resource
             HasMany::make('Topics'),
 
             Text::make('Name')
+                ->sortable()
                 ->creationRules('required', 'unique:chapters,name')
                 ->updateRules('required', 'unique:chapters,name,{{resourceId}}'),
 
@@ -68,6 +69,7 @@ class Chapter extends Resource
             Text::make('Image'),
 
             Text::make('Order')
+                ->sortable()
                 ->creationRules('required', 'unique:chapters,order')
                 ->updateRules('required', 'unique:chapters,order,{{resourceId}}'),
         ];

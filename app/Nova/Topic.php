@@ -61,6 +61,7 @@ class Topic extends Resource
             HasMany::make('Videos'),
 
             Text::make('Name')
+                ->sortable()
                 ->creationRules('required', 'unique:topics,name')
                 ->updateRules('required', 'unique:topics,name,{{resourceId}}'),
 
@@ -70,6 +71,7 @@ class Topic extends Resource
             Text::make('Image'),
 
             Text::make('Order')
+                ->sortable()
                 ->creationRules('required', 'unique:topics,order')
                 ->updateRules('required', 'unique:topics,order,{{resourceId}}'),
         ];

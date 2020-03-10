@@ -56,6 +56,7 @@ class Category extends Resource
             HasMany::make('Chapters'),
 
             Text::make('Name')
+                ->sortable()
                 ->creationRules('required', 'unique:categories,name')
                 ->updateRules('required', 'unique:categories,name,{{resourceId}}'),
 
@@ -63,6 +64,7 @@ class Category extends Resource
             Text::make('Image'),
 
             Text::make('Order')
+                ->sortable()
                 ->creationRules('required', 'unique:categories,order')
                 ->updateRules('required', 'unique:categories,order,{{resourceId}}'),
         ];

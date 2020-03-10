@@ -24,11 +24,11 @@ class Video extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'title';
 
     public function title()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
@@ -37,7 +37,7 @@ class Video extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'title'
     ];
 
     public static $group = 'Meta';
@@ -59,10 +59,8 @@ class Video extends Resource
 
             BelongsTo::make('Topic'),
 
-            // Image::make('Thumbnail')->disk('public'),
-            Text::make('Thumbnail'),
-
             Text::make('Title')
+                ->sortable()
                 ->creationRules('required', 'unique:videos,title')
                 ->updateRules('required', 'unique:videos,title,{{resourceId}}'),
 
@@ -70,7 +68,11 @@ class Video extends Resource
 
             Text::make('Url'),
 
+            // Image::make('Thumbnail')->disk('public'),
+            Text::make('Thumbnail'),
+
             Text::make('Order')
+                ->sortable()
                 ->creationRules('required', 'unique:videos,order')
                 ->updateRules('required', 'unique:videos,order,{{resourceId}}'),
         ];

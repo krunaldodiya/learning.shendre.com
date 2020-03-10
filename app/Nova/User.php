@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -13,6 +15,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use OwenMelbz\RadioField\RadioButton;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use R64\NovaFields\JSON;
 
 class User extends Resource
 {
@@ -108,6 +111,10 @@ class User extends Resource
             ])->onlyOnDetail(),
 
             Boolean::make('Profile Updated', 'status')->sortable(),
+
+            Date::make('Join At', 'created_at')->sortable(),
+
+            Text::make('Imei')->onlyOnDetail()
         ];
     }
 
