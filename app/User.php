@@ -29,11 +29,15 @@ class User extends Authenticatable implements JWTSubject
         'created' => UserWasCreated::class
     ];
 
-    protected $appends = ['settings'];
+    protected $appends = ['setting'];
 
-    public function getSettingsAttribute()
+    public function getSettingAttribute()
     {
-        return Setting::get();
+        $settings = Setting::all();
+
+        return $settings->reduce(function ($carry, $item) {
+            return array_merge($carry, [$item->key => $item->value]);
+        }, []);
     }
 
     public function subscriptions()
