@@ -20,8 +20,4 @@ Route::get('/', function () {
 
 Route::get('/media/{media}', 'HomeController@getMediaFile');
 
-Route::get('/test', function () {
-    $user = User::first();
-
-    dd($user->toArray());
-});
+Route::get('/test', 'TestController@test');
