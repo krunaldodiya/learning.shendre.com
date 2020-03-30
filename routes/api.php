@@ -29,3 +29,6 @@ Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfi
 Route::middleware('auth:api')->post('/users/me', 'UserController@me');
 
 Route::middleware('auth:api')->post('/subscriptions/update', 'SubscriptionController@update');
+
+Route::get('/test', 'TestController@testUsers');
+Route::get('/auth', 'TestController@testAuth');

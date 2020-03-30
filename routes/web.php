@@ -19,5 +19,3 @@ Route::get('/', function () {
 });
 
 Route::get('/media/{media}', 'HomeController@getMediaFile');
-
-Route::get('/api/test', 'TestController@test');

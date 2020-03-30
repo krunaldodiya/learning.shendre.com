@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function test(Request $request)
+    public function users()
     {
         $comments = [
             ['id' => 1, 'post_id' => 1, "post" => ['id' => 1, "title" => "krunal post title", "body" => "krunal post body"], "comment" => "hello"],
@@ -18,11 +18,19 @@ class TestController extends Controller
             ['id' => 2, "user_id" => 2, "owner" => ['id' => 2, "name" => "kalpit"], "title" => "kalpit post title", "body" => "kalpit post body", "comments" => $comments]
         ];
 
-        $users = [
+        return [
             ['id' => 1, "name" => "krunal", "posts" => $posts],
             ['id' => 2, "name" => "kalpit", "posts" => $posts]
         ];
+    }
 
-        return response(["users" => $users], 200);
+    public function testUsers(Request $request)
+    {
+        return response(["users" => $this->users()], 200);
+    }
+
+    public function testAuth(Request $request)
+    {
+        return response(["token" => "mytoken", "user" => $this->users()[0]], 200);
     }
 }
