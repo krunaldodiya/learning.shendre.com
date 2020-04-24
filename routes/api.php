@@ -26,7 +26,7 @@ Route::middleware('auth:api')->post('/upload/avatar', 'UserController@uploadAvat
 Route::middleware('auth:api')->post('/categories/all', 'CategoryController@getCategories');
 
 Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
-Route::middleware('auth:api')->post('/users/me', 'UserController@me');
+Route::middleware('auth:api')->get('/users/me', 'UserController@me');
 
 Route::middleware('auth:api')->post('/subscriptions/update', 'SubscriptionController@update');
 
