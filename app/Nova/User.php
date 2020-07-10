@@ -3,20 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Avatar;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use OwenMelbz\RadioField\RadioButton;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use R64\NovaFields\JSON;
 
 class User extends Resource
 {
@@ -33,11 +23,6 @@ class User extends Resource
      * @var string
      */
     public static $title = 'name';
-
-    public function title()
-    {
-        return $this->name;
-    }
 
     /**
      * The columns that should be searched.
@@ -57,23 +42,11 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable()->onlyOnDetail(),
+            ID::make()->sortable(),
 
-            Text::make('Unique Id')->onlyOnDetail(),
-
-            Avatar::make('Avatar'),
-
-            HasMany::make('Subscriptions'),
-
-            BelongsTo::make('Institute'),
-
-            Text::make('Unique Id')->sortable(),
+            Gravatar::make(),
 
             Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Mobile')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
@@ -87,35 +60,6 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
-
-            Text::make('Dob')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            RadioButton::make('Gender')
-                ->sortable()
-                ->options(['Male' => 'Male', 'Female' => 'Female'])
-                ->default('Male'),
-
-            Text::make('School')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Class')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Select::make('Account Status')->sortable()->options([
-                'Approved' => 'Approved',
-                'Pending' => 'Pending',
-                'Rejected' => 'Rejected',
-            ])->onlyOnDetail(),
-
-            Boolean::make('Profile Updated', 'status')->sortable(),
-
-            DateTime::make('Join At', 'created_at')->format('DD-MM-YYYY hh:mm A')->sortable(),
-
-            Text::make('Imei')->onlyOnDetail()
         ];
     }
 

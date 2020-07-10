@@ -23,6 +23,7 @@
         "laravel/nova": "^3.0",
         "laravel/telescope": "^3.1",
         "laravel/tinker": "^2.0",
+        "madewithlove/laravel-nova-uuid-support": "^1.1",
         "owenmelbz/nova-radio-field": "^0.0.5",
         "tymon/jwt-auth": "^1.0"
     },
