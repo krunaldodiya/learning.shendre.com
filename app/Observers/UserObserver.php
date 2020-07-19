@@ -17,7 +17,7 @@ class UserObserver
     {
         $institute = Institute::first();
 
-        $user->institutes()->attach($institute);
+        $user->institute()->attach($institute);
     }
 
     /**
