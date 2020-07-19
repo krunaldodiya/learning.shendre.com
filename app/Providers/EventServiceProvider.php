@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Event;
 use App\Events\UserWasCreated;
 use App\Listeners\AddUserToInstitute;
 
+use App\User;
+use App\Observers\UserObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -36,6 +39,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        User::observe(UserObserver::class);
     }
 }
