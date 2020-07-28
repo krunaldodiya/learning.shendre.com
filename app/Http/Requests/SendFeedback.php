@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 
-class Feedback extends FormRequest
+class SendFeedback extends FormRequest
 {
     public function authorize()
     {

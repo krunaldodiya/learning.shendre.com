@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 
-use App\Http\Requests\Feedback;
+use App\Http\Requests\SendFeedback;
 
 class FeedbackController extends Controller
 {
-    public function send(Feedback $request)
+    public function send(SendFeedback $request)
     {
         $feedback = Feedback::create($request->all());
 
