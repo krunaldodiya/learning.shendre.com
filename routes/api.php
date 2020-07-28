@@ -23,6 +23,8 @@ Route::middleware('guest:api')->post('/otp/verify', 'OtpController@verifyOtp');
 
 Route::middleware('auth:api')->post('/upload/avatar', 'UserController@uploadAvatar');
 
+Route::middleware('auth:api')->post('/feedback/send', 'FeedbackController@send');
+
 Route::middleware('auth:api')->get('/categories/all', 'CategoryController@getCategories');
 
 Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
