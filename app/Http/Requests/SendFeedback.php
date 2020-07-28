@@ -17,7 +17,7 @@ class SendFeedback extends FormRequest
         return [
             'subject' => 'required',
             'message' => 'required',
-            'user_id' => 'required|exists:users'
+            'user_id' => 'required|exists:users:id'
         ];
     }
 

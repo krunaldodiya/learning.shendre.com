@@ -17,6 +17,7 @@ class CreateFeedbackTable extends Migration
             $table->uuid('id')->primary();
 
             $table->string('subject');
+            
             $table->text('message');
 
             $table->uuid('user_id');
