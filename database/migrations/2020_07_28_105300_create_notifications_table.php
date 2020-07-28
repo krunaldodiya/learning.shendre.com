@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstituteCategoriesTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,17 @@ class CreateInstituteCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('institute_categories', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->uuid('id')->primary();
+
+            $table->string('image');
+
+            $table->string('title');
+
+            $table->text('description');
+
+            $table->boolean('read')->default(false);
+
             $table->timestamps();
         });
     }
@@ -26,6 +35,6 @@ class CreateInstituteCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institute_categories');
+        Schema::dropIfExists('notifications');
     }
 }

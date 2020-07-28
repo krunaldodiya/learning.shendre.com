@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstituteCategoriesTable extends Migration
+class CreateFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,15 @@ class CreateInstituteCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('institute_categories', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->uuid('id')->primary();
+
+            $table->string('subject');
+            $table->text('message');
+
+            $table->uuid('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreateInstituteCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institute_categories');
+        Schema::dropIfExists('feedback');
     }
 }

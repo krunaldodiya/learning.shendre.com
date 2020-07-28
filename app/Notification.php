@@ -6,7 +6,7 @@ use App\Traits\HasUuid;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InstituteCategory extends Model
+class Notification extends Model
 {
     use HasUuid;
 
