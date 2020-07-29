@@ -26,6 +26,6 @@ class SendPushNotification
      */
     public function handle(NotificationWasCreated $event)
     {
-        \dump($event);
+        dump($event);
     }
 }
