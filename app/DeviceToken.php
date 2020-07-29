@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Jamesh\Uuid\HasUuid;
+use App\Traits\HasUuid;
 
 class DeviceToken extends Model
 {
