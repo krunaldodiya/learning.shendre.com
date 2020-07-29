@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Event;
 use App\Events\UserWasCreated;
 use App\Listeners\AddUserToInstitute;
 
+use App\Events\NotificationWasCreated;
+use App\Listeners\SendPushNotification;
+
 use App\InstituteCategory;
 use App\Observers\InstituteCategoryObserver;
 
@@ -27,6 +30,10 @@ class EventServiceProvider extends ServiceProvider
 
         UserWasCreated::class => [
             AddUserToInstitute::class,
+        ],
+
+        NotificationWasCreated::class => [
+            SendPushNotification::class,
         ],
     ];
 

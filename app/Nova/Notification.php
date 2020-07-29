@@ -3,7 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Notification extends Resource
@@ -41,6 +44,14 @@ class Notification extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            Avatar::make('Image')->sortable(),
+
+            Text::make('Title')->sortable()->rules('required'),
+
+            Text::make('Description')->sortable()->rules('required'),
+
+            DateTime::make('Created At')->sortable()->rules('required'),
         ];
     }
 
