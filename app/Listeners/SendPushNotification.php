@@ -7,17 +7,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
 use App\User;
+use App\Repositories\PushNotificationRepository;
+use Illuminate\Support\Facades\Storage;
 
 class SendPushNotification
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $pushNotificationRepository;
+
+    public function __construct(PushNotificationRepository $pushNotificationRepository)
     {
-        //
+        $this->pushNotificationRepository = $pushNotificationRepository;
     }
 
     /**
@@ -25,11 +24,17 @@ class SendPushNotification
      *
      * @param  NotificationWasCreated  $event
      * @return void
+     *
+     *
      */
     public function handle(NotificationWasCreated $event)
     {
-        $user = User::first();
-        $user->name = "okay";
-        $user->save();
+        $notification = $event->notification;
+
+        $this->pushNotificationRepository->notify("/topics/users", [
+            'title' => $notification['title'],
+            'body' => $notification['description'],
+            'image' => Storage::url($notification['image']),
+        ]);
     }
 }
