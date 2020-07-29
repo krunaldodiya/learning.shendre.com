@@ -29,14 +29,12 @@ class SendPushNotification
      */
     public function handle(NotificationWasCreated $event)
     {
-        dump($event);
+        $notification = $event->notification;
 
-        // $notification = $event->notification;
-
-        // $this->pushNotificationRepository->notify("/topics/users", [
-        //     'title' => $notification['title'],
-        //     'body' => $notification['description'],
-        //     'image' => Storage::url($notification['image']),
-        // ]);
+        $this->pushNotificationRepository->notify("/topics/users", [
+            'title' => $notification['title'],
+            'body' => $notification['description'],
+            'image' => Storage::url($notification['image']),
+        ]);
     }
 }
