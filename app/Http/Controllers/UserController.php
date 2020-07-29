@@ -7,6 +7,7 @@ use App\Repositories\UserRepositoryInterface;
 use App\User;
 use App\DeviceToken;
 use Illuminate\Http\Request;
+use Error;
 
 class UserController extends Controller
 {

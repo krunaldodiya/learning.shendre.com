@@ -50,6 +50,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Institute::class);
     }
 
+    public function device_tokens()
+    {
+        return $this->hasMany(DeviceToken::class);
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

@@ -13,6 +13,20 @@ class PushNotificationRepository implements PushNotificationRepositoryInterface
         return Http::withToken(env('PUSH_TOKEN'));
     }
 
+    public function subscribeTopic($topic, $tokens)
+    {
+        try {
+            $response = $this->client()->post("https://iid.googleapis.com/iid/v1:batchAdd", [
+                "to" => "/topics/{$topic->name}",
+                "registration_tokens" => $tokens,
+            ]);
+
+            return $response->json();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function notify($topic, $data)
     {
         try {
