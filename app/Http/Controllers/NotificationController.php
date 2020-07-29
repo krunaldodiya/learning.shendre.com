@@ -8,7 +8,7 @@ use App\Notification;
 
 class NotificationController extends Controller
 {
-    public function updateProfile(UpdateProfile $request)
+    public function getNotifications(Request $request)
     {
         $notifications = Notification::paginate(100);
 
