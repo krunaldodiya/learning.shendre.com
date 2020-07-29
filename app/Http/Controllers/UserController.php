@@ -16,6 +16,21 @@ class UserController extends Controller
         $this->userRepository = $userRepository;
     }
 
+    public function setToken(Request $request)
+    {
+        $user = auth()->user();
+
+        $data = ['user_id' => $user->id, 'token' => $request->device_token];
+
+        $exists = DeviceToken::where($data)->first();
+
+        if (!$exists) {
+            return DeviceToken::create($data);
+        }
+
+        throw new Error("Token already exists", 401);
+    }
+
     public function updateProfile(UpdateProfile $request)
     {
         $user = auth()->user();

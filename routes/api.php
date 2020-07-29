@@ -29,6 +29,7 @@ Route::middleware('auth:api')->get('/categories/all', 'CategoryController@getCat
 
 Route::middleware('auth:api')->get('/notifications/all', 'NotificationController@getNotifications');
 
+Route::middleware('auth:api')->post('/users/token', 'UserController@setToken');
 Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
 Route::middleware('auth:api')->get('/users/me', 'UserController@me');
 
