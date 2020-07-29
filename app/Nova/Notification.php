@@ -51,7 +51,7 @@ class Notification extends Resource
 
             Text::make('Description')->sortable()->rules('required'),
 
-            DateTime::make('Created At')->sortable()->rules('required'),
+            DateTime::make('Created At')->exceptOnForms()->sortable()->rules('required'),
         ];
     }
 
