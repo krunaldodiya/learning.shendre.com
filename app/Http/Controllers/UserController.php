@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfile;
 use App\Repositories\UserRepositoryInterface;
 use App\User;
+use App\DeviceToken;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
