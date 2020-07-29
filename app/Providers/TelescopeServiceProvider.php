@@ -16,7 +16,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     public function register()
     {
-        // Telescope::night();
+        Telescope::night();
 
         $this->hideSensitiveRequestDetails();
 
@@ -25,16 +25,16 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
 
         // Telescope::filter(function (IncomingEntry $entry) {
-        //     if ($this->app->environment('local')) {
-        //         return true;
-        //     }
+         //     if ($this->app->isLocal()) {
+         //         return true;
+         //     }
 
-        //     return $entry->isReportableException() ||
-        //         $entry->isFailedRequest() ||
-        //         $entry->isFailedJob() ||
-        //         $entry->isScheduledTask() ||
-        //         $entry->hasMonitoredTag();
-        // });
+         //     return $entry->isReportableException() ||
+         //         $entry->isFailedRequest() ||
+         //         $entry->isFailedJob() ||
+         //         $entry->isScheduledTask() ||
+         //         $entry->hasMonitoredTag();
+         // });
     }
 
     /**
@@ -44,17 +44,17 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->environment('local')) {
+        if ($this->app->isLocal()) {
             return;
         }
 
         Telescope::hideRequestParameters(['_token']);
 
         Telescope::hideRequestHeaders([
-            'cookie',
-            'x-csrf-token',
-            'x-xsrf-token',
-        ]);
+             'cookie',
+             'x-csrf-token',
+             'x-xsrf-token',
+         ]);
     }
 
     /**
@@ -68,10 +68,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         Gate::define('viewTelescope', function ($user) {
             return in_array($user->email, [
-                'kunal.dodiya1@gmail.com',
-                'shree8241@gmail.com',
-                'jokescoff@gmail.com'
-            ]);
+                 "kunal.dodiya1@gmail.com",
+                 "aryanadya@gmail.com"
+             ]);
         });
     }
 }
