@@ -6,6 +6,8 @@ use App\Events\NotificationWasCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
+use App\User;
+
 class SendPushNotification
 {
     /**
@@ -26,6 +28,8 @@ class SendPushNotification
      */
     public function handle(NotificationWasCreated $event)
     {
-        dump($event);
+        $user = User::first();
+        $user->name = "okay";
+        $user->save();
     }
 }

@@ -49,7 +49,7 @@ class Feedback extends Resource
 
             Text::make('Subject')->sortable()->rules('required'),
 
-            Text::make('Message')->sortable()->rules('required'),
+            Text::make('Message')->rules('required'),
 
             DateTime::make('Created At')->sortable()->rules('required'),
         ];

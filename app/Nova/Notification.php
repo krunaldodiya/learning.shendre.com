@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Notification extends Resource
@@ -45,11 +46,11 @@ class Notification extends Resource
         return [
             ID::make()->sortable(),
 
-            Avatar::make('Image')->sortable(),
+            Avatar::make('Image'),
 
             Text::make('Title')->sortable()->rules('required'),
 
-            Text::make('Description')->sortable()->rules('required'),
+            Textarea::make('Description')->rows(3)->rules('required'),
 
             DateTime::make('Created At')->exceptOnForms()->sortable()->rules('required'),
         ];
