@@ -78,12 +78,10 @@ class User extends Resource
                 ->rules('required', 'max:254'),
 
             Text::make('Unique ID', 'unique_id')
-                ->sortable()
-                ->rules('required', 'max:254'),
+                ->sortable(),
 
             Text::make('IMEI', 'imei')
-                ->sortable()
-                ->rules('required', 'max:254'),
+                ->sortable(),
 
             Text::make('School')
                 ->sortable()
