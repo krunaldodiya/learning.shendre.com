@@ -27,6 +27,9 @@ class TestController extends Controller
 
     public function testNotification(Request $request)
     {
+        $topic = "/topics/users";
+        $data = ['title' => 'from back', 'body' => 'test body'];
+
         try {
             $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
                 'to' => $topic,
