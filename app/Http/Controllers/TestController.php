@@ -37,7 +37,7 @@ class TestController extends Controller
                 'data' => $data,
             ]);
 
-            dd($response);
+            dd($response->json());
 
             return $response->json();
         } catch (\Throwable $th) {
