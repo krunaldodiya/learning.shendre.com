@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Topic;
-use App\User;
+
 use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
@@ -27,6 +27,8 @@ class TestController extends Controller
 
     public function testNotification(Request $request)
     {
+        dd(env('PUSH_TOKEN'));
+
         $topic = "/topics/users";
         $data = ['title' => 'from back', 'body' => 'test body'];
 
