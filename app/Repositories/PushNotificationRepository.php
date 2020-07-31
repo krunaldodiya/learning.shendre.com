@@ -10,7 +10,11 @@ class PushNotificationRepository implements PushNotificationRepositoryInterface
 {
     public function client()
     {
-        return Http::withToken(env('PUSH_TOKEN'));
+        return Http::withHeaders([
+            'Authorization' => env('PUSH_TOKEN'),
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ]);
     }
 
     public function subscribeTopic($topic, $tokens)
