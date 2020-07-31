@@ -3,10 +3,14 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
 
 class User extends Resource
 {
@@ -50,6 +54,10 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
+            Text::make('Mobile')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
@@ -60,6 +68,43 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            Text::make('Gender')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
+            Text::make('Date of Birth', 'dob')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
+            Text::make('Unique ID', 'unique_id')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
+            Text::make('IMEI', 'imei')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
+            Text::make('School')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
+            Text::make('Class')
+                ->sortable()
+                ->rules('required', 'max:254'),
+
+            BelongsTo::make("Institute"),
+
+            HasMany::make("Subscriptions"),
+
+            Date::make('Joined On', "created_at")
+                ->exceptOnForms()
+                ->resolveUsing(function ($date) {
+                    return $date->format('d/m/Y h:m A');
+                })
+                ->sortable(),
+
+            Boolean::make('Status')
         ];
     }
 
