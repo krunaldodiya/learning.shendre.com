@@ -31,11 +31,13 @@ class TestController extends Controller
         $data = ['title' => 'from back', 'body' => 'test body'];
 
         try {
-            $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
-                'to' => $topic,
-                'notification' => $data,
-                'data' => $data,
-            ]);
+            // $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
+            //     'to' => $topic,
+            //     'notification' => $data,
+            //     'data' => $data,
+            // ]);
+
+            $response = $this->client()->get("https://jsonplaceholder.typicode.com/todos/1");
 
             dd($response->json());
 
