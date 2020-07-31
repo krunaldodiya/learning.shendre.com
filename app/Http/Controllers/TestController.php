@@ -27,8 +27,6 @@ class TestController extends Controller
 
     public function testNotification(Request $request)
     {
-        dd(env('PUSH_TOKEN'));
-
         $topic = "/topics/users";
         $data = ['title' => 'from back', 'body' => 'test body'];
 
@@ -38,6 +36,8 @@ class TestController extends Controller
                 'notification' => $data,
                 'data' => $data,
             ]);
+
+            dd($response);
 
             return $response->json();
         } catch (\Throwable $th) {
