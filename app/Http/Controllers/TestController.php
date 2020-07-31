@@ -12,7 +12,11 @@ class TestController extends Controller
 {
     public function client()
     {
-        return Http::withToken("key=AAAAJzAo3x4:APA91bHo0N5Bbn2igJm5d1v6CJp3jLqT9X0r-wCNOxi-ekla4ybSrIC8OA85SGRRjYvdCR_z25WfZUOGp9w7UBwb4nWoAzOCgRLoK151FNCSVzPkPozurYn_Fn7mO1wj7p55MSew0urR");
+        return Http::withHeaders([
+            'Authorization' => 'key=AAAAJzAo3x4:APA91bHo0N5Bbn2igJm5d1v6CJp3jLqT9X0r-wCNOxi-ekla4ybSrIC8OA85SGRRjYvdCR_z25WfZUOGp9w7UBwb4nWoAzOCgRLoK151FNCSVzPkPozurYn_Fn7mO1wj7p55MSew0urR',
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ]);
     }
 
     public function testUsers(Request $request)
