@@ -17,7 +17,7 @@ class DeviceTokenObserver
 
     public function manageTokens(DeviceToken $deviceToken)
     {
-        $this->pushNotificationRepository->subscribeTopic($topic, [$deviceToken->token]);
+        $this->pushNotificationRepository->subscribeTopic("users", [$deviceToken->token]);
     }
 
     /**

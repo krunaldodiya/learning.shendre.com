@@ -17,7 +17,7 @@ class PushNotificationRepository implements PushNotificationRepositoryInterface
     {
         try {
             $response = $this->client()->post("https://iid.googleapis.com/iid/v1:batchAdd", [
-                "to" => "/topics/{$topic->name}",
+                "to" => "/topics/{$topic}",
                 "registration_tokens" => $tokens,
             ]);
 
