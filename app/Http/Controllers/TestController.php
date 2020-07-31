@@ -4,24 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Topic;
+use App\User;
+use Illuminate\Support\Facades\Http;
+
 class TestController extends Controller
 {
-    public function users()
+    public function client()
     {
-        $comments = [
-            ['id' => 1, 'post_id' => 1, "post" => ['id' => 1, "title" => "krunal post title", "body" => "krunal post body"], "comment" => "hello"],
-            ['id' => 2, 'post_id' => 2, "post" => ['id' => 2, "title" => "kalpit post title", "body" => "kalpit post body"], "comment" => "hello"]
-        ];
-
-        $posts = [
-            ['id' => 1, "user_id" => 1, "owner" => ['id' => 1, "name" => "krunal"], "title" => "krunal post title", "body" => "krunal post body", "comments" => $comments],
-            ['id' => 2, "user_id" => 2, "owner" => ['id' => 2, "name" => "kalpit"], "title" => "kalpit post title", "body" => "kalpit post body", "comments" => $comments]
-        ];
-
-        return [
-            ['id' => 1, "name" => "krunal", "posts" => $posts],
-            ['id' => 2, "name" => "kalpit", "posts" => $posts]
-        ];
+        return Http::withToken(env('PUSH_TOKEN'));
     }
 
     public function testUsers(Request $request)
@@ -32,5 +23,20 @@ class TestController extends Controller
     public function testAuth(Request $request)
     {
         return response(["token" => "mytoken", "user" => $this->users()[0]], 200);
+    }
+
+    public function testNotification(Request $request)
+    {
+        try {
+            $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
+                'to' => $topic,
+                'notification' => $data,
+                'data' => $data,
+            ]);
+
+            return $response->json();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

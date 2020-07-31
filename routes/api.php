@@ -37,3 +37,4 @@ Route::middleware('auth:api')->post('/subscriptions/update', 'SubscriptionContro
 
 Route::get('/test/users', 'TestController@testUsers');
 Route::get('/test/auth', 'TestController@testAuth');
+Route::get('/test/notification', 'TestController@testNotification');
