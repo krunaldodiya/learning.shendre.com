@@ -12,7 +12,7 @@ class TestController extends Controller
 {
     public function client()
     {
-        return Http::withToken(env('PUSH_TOKEN'));
+        return Http::withToken("key=AAAAJzAo3x4:APA91bHo0N5Bbn2igJm5d1v6CJp3jLqT9X0r-wCNOxi-ekla4ybSrIC8OA85SGRRjYvdCR_z25WfZUOGp9w7UBwb4nWoAzOCgRLoK151FNCSVzPkPozurYn_Fn7mO1wj7p55MSew0urR");
     }
 
     public function testUsers(Request $request)
@@ -28,16 +28,15 @@ class TestController extends Controller
     public function testNotification(Request $request)
     {
         $topic = "/topics/users";
+
         $data = ['title' => 'from back', 'body' => 'test body'];
 
         try {
-            // $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
-            //     'to' => $topic,
-            //     'notification' => $data,
-            //     'data' => $data,
-            // ]);
-
-            $response = $this->client()->get("https://jsonplaceholder.typicode.com/todos/1");
+            $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
+                'to' => $topic,
+                'notification' => $data,
+                'data' => $data,
+            ]);
 
             dd($response->json());
 
