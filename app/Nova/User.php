@@ -95,6 +95,8 @@ class User extends Resource
 
             HasMany::make("Subscriptions"),
 
+            HasMany::make("Device Tokens", "device_tokens", DeviceToken::class),
+
             Date::make('Joined On', "created_at")
                 ->exceptOnForms()
                 ->resolveUsing(function ($date) {
