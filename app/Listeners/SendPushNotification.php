@@ -32,6 +32,7 @@ class SendPushNotification
         $notification = $event->notification;
 
         $this->pushNotificationRepository->notify("/topics/users", [
+            'notification' => $notification,
             'title' => $notification['title'],
             'body' => $notification['description'],
             'image' => Storage::url($notification['image']),
