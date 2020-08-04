@@ -34,6 +34,6 @@ class TestController extends Controller
     {
         $notification = Notification::first();
 
-        dd(asset("storage/{$notification->image})");
+        dd(asset("storage/{$notification['image']}"));
     }
 }
