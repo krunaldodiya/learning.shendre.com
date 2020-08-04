@@ -29,7 +29,7 @@ class SendPushNotification
      */
     public function handle(NotificationWasCreated $event)
     {
-        dump(assets("storage/".$notification['image']));
+        dump(Storage::url($notification['image']));
 
         $notification = $event->notification;
 
@@ -37,7 +37,8 @@ class SendPushNotification
             'notification' => $notification,
             'title' => $notification['title'],
             'body' => $notification['description'],
-            'image' => assets("storage/".$notification['image']),
+            // 'image' => Storage::url($notification['image']),
+            'image' => "https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/05/pjimage-5-1589546097.jpg",
         ]);
     }
 }
