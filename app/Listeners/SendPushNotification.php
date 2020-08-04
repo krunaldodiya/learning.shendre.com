@@ -29,9 +29,10 @@ class SendPushNotification
      */
     public function handle(NotificationWasCreated $event)
     {
+        $notification = $event->notification;
+
         dump(Storage::url($notification['image']));
 
-        $notification = $event->notification;
 
         $this->pushNotificationRepository->notify("/topics/users", [
             'notification' => $notification,
