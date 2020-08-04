@@ -10,7 +10,7 @@ class NotificationController extends Controller
 {
     public function getNotifications(Request $request)
     {
-        $notifications = Notification::paginate(100);
+        $notifications = Notification::all();
 
         return response(['notifications' => $notifications], 200);
     }
