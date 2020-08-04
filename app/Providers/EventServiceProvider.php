@@ -16,6 +16,9 @@ use App\Listeners\SendPushNotification;
 use App\InstituteCategory;
 use App\Observers\InstituteCategoryObserver;
 
+use App\DeviceToken;
+use App\Observers\DeviceTokenObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -47,5 +50,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         InstituteCategory::observe(InstituteCategoryObserver::class);
+        DeviceToken::observe(DeviceTokenObserver::class);
     }
 }
