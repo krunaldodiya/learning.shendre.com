@@ -31,22 +31,6 @@ class TestController extends Controller
 
     public function testNotification(Request $request)
     {
-        $topic = "/topics/users";
-
-        $data = ['title' => 'from back', 'body' => 'test body'];
-
-        try {
-            $response = $this->client()->post("https://fcm.googleapis.com/fcm/send", [
-                'to' => $topic,
-                'notification' => $data,
-                'data' => $data,
-            ]);
-
-            dd($response->json());
-
-            return $response->json();
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        dump("test");
     }
 }
