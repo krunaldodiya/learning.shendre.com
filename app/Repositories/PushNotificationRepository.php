@@ -19,8 +19,6 @@ class PushNotificationRepository implements PushNotificationRepositoryInterface
 
     public function subscribeTopic($topic, $tokens)
     {
-        dump($topic, $tokens);
-
         try {
             $response = $this->client()->post("https://iid.googleapis.com/iid/v1:batchAdd", [
                 "to" => "/topics/{$topic}",
