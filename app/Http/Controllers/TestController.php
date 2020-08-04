@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Topic;
+use App\Notification;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
 {
@@ -31,6 +32,8 @@ class TestController extends Controller
 
     public function testNotification(Request $request)
     {
-        dump("test");
+        $notification = Notification::first();
+
+        dump(Storage::url($notification['image']));
     }
 }
