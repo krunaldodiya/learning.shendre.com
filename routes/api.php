@@ -28,7 +28,7 @@ Route::middleware('auth:api')->post('/feedback/send', 'FeedbackController@send')
 Route::middleware('auth:api')->get('/categories/all', 'CategoryController@getCategories');
 
 Route::middleware('auth:api')->get('/notifications/all', 'NotificationController@getNotifications');
-Route::middleware('auth:api')->get('/notifications/read', 'NotificationController@markAsRead');
+Route::middleware('auth:api')->post('/notifications/read', 'NotificationController@markAsRead');
 
 Route::middleware('auth:api')->post('/users/token', 'UserController@setToken');
 Route::middleware('auth:api')->post('/users/update', 'UserController@updateProfile');
