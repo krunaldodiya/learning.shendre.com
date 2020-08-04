@@ -10,7 +10,7 @@ class NotificationController extends Controller
 {
     public function getNotifications(Request $request)
     {
-        $notifications = Notification::all();
+        $notifications = Notification::orderBy('created_at', 'desc')->get();
 
         return response(['notifications' => $notifications], 200);
     }
