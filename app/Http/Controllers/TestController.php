@@ -34,6 +34,6 @@ class TestController extends Controller
     {
         $notification = Notification::first();
 
-        dump(Storage::url($notification['image']));
+        dd(asset("storage/{$notification->image})");
     }
 }
