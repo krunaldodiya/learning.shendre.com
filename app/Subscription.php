@@ -3,7 +3,10 @@
 namespace App;
 
 use App\Traits\HasUuid;
+
 use Illuminate\Database\Eloquent\Model;
+
+use Carbon\Carbon;
 
 class Subscription extends Model
 {
@@ -15,6 +18,13 @@ class Subscription extends Model
         'created_at', 'updated_at', 'expires_at'
     ];
 
+    protected $appends = ['status'];
+
+    public function getStatusAttribute()
+    {
+        return $this->expires_at > Carbon::now() ? "Active" : "Expired";
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -22,7 +32,6 @@ class Subscription extends Model
 
     public function plan()
     {
-
         return $this->belongsTo(Plan::class);
     }
 
