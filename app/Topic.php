@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\HasUuid;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
